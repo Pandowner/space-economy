@@ -50,7 +50,7 @@ profil_data.set(`${user}.money`, {
 	bank: getMoneyBank
 });
 return message.channel.send("✅ Vous avez récolté **150** € en étant **chauffeur scolaire** !")
-
+}
 
 if(getJob == "None") {
 profil_data.set(`${user}.money`, {
