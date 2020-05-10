@@ -17,7 +17,7 @@ if (talkedRecently.has(message.author.id)) {
 
 talkedRecently.add(message.author.id);
 
-companyGet = company.get(`${user}.company`)
+let companyGet = company.get(`${user}.company`)
 if(companyGet) {
 if(companyGet === "usineMetaux"){
 profil_data.set(`${user}.money`, {
@@ -52,6 +52,7 @@ profil_data.set(`${user}.money`, {
 return message.channel.send("✅ Vous avez récolté **150** € en étant **chauffeur scolaire** !")
 }
 
+if(getJob) {
 if(getJob == "None") {
 profil_data.set(`${user}.money`, {
 poche: getMoney + 1,
@@ -82,6 +83,7 @@ poche: getMoney + 33,
 bank: getMoneyBank
 });
 return message.channel.send("✅ Vous avez récolté **33** € en étant **Surveillant(e)** !")
+}
 }
 }
 setTimeout(() => {
