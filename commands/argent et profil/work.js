@@ -11,13 +11,46 @@ let getJob = job_data.get(`${user}.job`)
 if(!getJob) getJob = "None"
 let getMoney = profil_data.get(`${user}.money.poche`)
 let getMoneyBank = profil_data.get(`${user}.money.bank`)
+let companyGet = company.get(`${user}.company`)
 
 if (talkedRecently.has(message.author.id)) {
             return message.channel.send("❌ Cette commande possède un cooldown d'une heure.")}
 
 talkedRecently.add(message.author.id);
 
-let companyGet = company.get(`${user}.company`)
+// Debut du getJob
+
+if(!getJob || getJob == "None") {
+profil_data.set(`${user}.money`, {
+poche: getMoney + 1,
+bank: getMoneyBank
+});
+return message.channel.send("✅ Vous n'avez gagné que **1** € puisque vous êtes **Chômeur(euse)** ! Pensez à trouver un travail avec la commande `sp?findWork` !")
+}
+
+if(getJob) {
+if(getJob == "cuisinier") {
+profil_data.set(`${user}.money`, {
+poche: getMoney + 31,
+bank: getMoneyBank
+});
+return message.channel.send("✅ Vous avez récolté **31** € en étant **Cusinier(ère)** !")
+} else if(getJob == "eboueur") {
+profil_data.set(`${user}.money`, {
+poche: getMoney + 36,
+bank: getMoneyBank
+});
+return message.channel.send("✅ Vous avez récolté **36** € en étant **Éboueur(euse)** !")
+} else if(getJob == "surveillant") {
+profil_data.set(`${user}.money`, {
+poche: getMoney + 33,
+bank: getMoneyBank
+});
+return message.channel.send("✅ Vous avez récolté **33** € en étant **Surveillant(e)** !")
+}
+} // Fin du getJob
+
+// Debut du companyGet
 if(companyGet) {
 if(companyGet === "usineMetaux"){
 profil_data.set(`${user}.money`, {
@@ -51,41 +84,8 @@ profil_data.set(`${user}.money`, {
 });
 return message.channel.send("✅ Vous avez récolté **150** € en étant **chauffeur scolaire** !")
 }
-
-if(getJob) {
-if(getJob == "None") {
-profil_data.set(`${user}.money`, {
-poche: getMoney + 1,
-bank: getMoneyBank
-});
-return message.channel.send("✅ Vous n'avez gagné que **1** € puisque vous êtes **Chômeur(euse)** ! Pensez à trouver un travail avec la commande `sp?findWork` !")
 }
 
-if(getJob == "cuisinier") {
-profil_data.set(`${user}.money`, {
-poche: getMoney + 31,
-bank: getMoneyBank
-});
-return message.channel.send("✅ Vous avez récolté **31** € en étant **Cusinier(ère)** !")
-}
-
-if(getJob == "eboueur") {
-profil_data.set(`${user}.money`, {
-poche: getMoney + 36,
-bank: getMoneyBank
-});
-return message.channel.send("✅ Vous avez récolté **36** € en étant **Éboueur(euse)** !")
-}
-
-if(getJob == "surveillant") {
-profil_data.set(`${user}.money`, {
-poche: getMoney + 33,
-bank: getMoneyBank
-});
-return message.channel.send("✅ Vous avez récolté **33** € en étant **Surveillant(e)** !")
-}
-}
-}
 setTimeout(() => {
           talkedRecently.delete(message.author.id);
         }, 3600000);
