@@ -1,7 +1,7 @@
 # Space Economy
-Un bot économie très basique codé par VinxVinx#0001
+Un bot économie très basique codé par Nino#6669
 
-» Space est un très petit bot discord économie codé par VinxVinx#0001.
+» Space est un très petit bot discord économie codé par Nino#6669.
 Ce n´est pas un énorme bot mais il convient très bien aux personnes ayant besoin d´aide dans l´utilisation de quick.db, savoir comment fonctionne un bot économie ect..
 
 # Modules npm à installer :
